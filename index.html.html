@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Okeanın dibində nə var? | Arif Həsənov</title>
+<style>
+:root{--bg:#03111f;--cyan:#51e5f2;--blue:#1479a8;--white:#f2fbff;--muted:#a8c7d7}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--white);font-family:Inter,"Segoe UI",Arial,sans-serif}
+body:before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 70% 20%,#0a4261 0,transparent 38%),radial-gradient(ellipse at 15% 90%,#062b43 0,transparent 42%),linear-gradient(150deg,#020914,#031b2b 55%,#020812);z-index:0}
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+.deck{position:relative;width:100vw;height:100vh;z-index:1}
+.slide{position:absolute;inset:0;padding:7vh 8vw 9vh;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateX(35px) scale(.985);transition:opacity .65s ease,transform .65s ease;pointer-events:none;overflow:hidden}
+.slide.active{opacity:1;transform:translateX(0) scale(1);pointer-events:auto}
+.eyebrow{color:var(--cyan);font-size:clamp(11px,1.2vw,16px);letter-spacing:.25em;text-transform:uppercase;margin-bottom:18px}
+h1{font-size:clamp(42px,7.5vw,100px);line-height:.98;letter-spacing:-.055em;margin:0 0 24px;max-width:1000px}
+h2{font-size:clamp(32px,5vw,65px);line-height:1.02;letter-spacing:-.04em;margin:0 0 25px;max-width:1050px}
+p,.lead{font-size:clamp(16px,1.7vw,23px);line-height:1.55;color:#d1e8f1;max-width:780px}
+.accent{color:var(--cyan)}
+.rule{width:90px;height:4px;background:var(--cyan);margin:12px 0 24px;border-radius:4px;box-shadow:0 0 25px #51e5f288}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:3vw}
+.orb{width:min(35vw,440px);aspect-ratio:1;border-radius:50%;position:relative;margin:auto;background:radial-gradient(circle at 34% 25%,#6bf2ff 0,#168db9 12%,#075174 32%,#031b36 66%,#020914 75%);box-shadow:inset -30px -25px 55px #000b,0 0 65px #1595cb44;animation:float 6s ease-in-out infinite}
+.orb:before,.orb:after{content:"";position:absolute;inset:9%;border:1px solid #79eaff55;border-radius:50%;transform:rotate(-25deg) scaleY(.34);animation:spin 13s linear infinite}
+.orb:after{inset:20% -4%;transform:rotate(40deg) scaleY(.25);animation-duration:18s}
+@keyframes float{50%{transform:translateY(-13px)}}
+@keyframes spin{to{transform:rotate(335deg) scaleY(.34)}}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:24px;max-width:1050px}
+.card{padding:20px 20px 22px;border:1px solid #7adcf52c;border-radius:18px;background:linear-gradient(145deg,#0c3048cc,#061725c9);backdrop-filter:blur(8px);min-height:150px}
+.card .num{font-size:clamp(25px,3vw,42px);font-weight:800;color:var(--cyan);letter-spacing:-.04em}
+.card h3{font-size:clamp(16px,1.5vw,20px);margin:10px 0 8px}
+.card p{font-size:clamp(13px,1.2vw,16px);margin:0;color:var(--muted);line-height:1.45}
+.fact-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 28px;max-width:1000px}
+.fact{border-left:2px solid var(--cyan);padding:4px 0 4px 17px;font-size:clamp(15px,1.5vw,21px);line-height:1.4;color:#d8edf5}
+.depth-layout{display:grid;grid-template-columns:1fr .8fr;gap:5vw;align-items:center}
+.depth-number{font-size:clamp(54px,9vw,120px);font-weight:850;letter-spacing:-.07em;line-height:1;color:var(--cyan);text-shadow:0 0 35px #32cbe855}
+.depth-line{height:230px;width:8px;border-radius:9px;background:linear-gradient(#a5f9ff,#147ba7,#061626);position:relative;margin:20px 0 0 12px}
+.depth-line:after{content:"";position:absolute;left:-8px;bottom:0;width:24px;height:24px;border:2px solid var(--cyan);border-radius:50%;box-shadow:0 0 25px var(--cyan);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 40px var(--cyan);transform:scale(1.13)}}
+.creature{font-size:clamp(95px,16vw,190px);filter:drop-shadow(0 0 25px #3be8ff55);animation:float 5s ease-in-out infinite;text-align:center}
+.quote{font-size:clamp(25px,4.3vw,55px);line-height:1.15;letter-spacing:-.035em;max-width:1000px}
+.quiz{margin-top:20px;padding:20px 24px;border:1px solid #51e5f255;background:#08283b;border-radius:16px;max-width:780px}
+.quiz button{margin:8px 8px 0 0;border:1px solid #5eddf066;background:#0b3c55;color:white;border-radius:999px;padding:10px 17px;cursor:pointer;font-size:15px;transition:.2s}
+.quiz button:hover{background:#116181;transform:translateY(-2px)}
+#answer{color:var(--cyan);margin-top:12px;font-weight:700}
+.footer{position:absolute;left:8vw;right:8vw;bottom:28px;display:flex;align-items:center;gap:15px;color:#8db1c2;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.progress{height:3px;background:#234353;flex:1;border-radius:4px;overflow:hidden}
+#progressFill{height:100%;width:14.285%;background:var(--cyan);transition:width .4s}
+.controls{position:absolute;right:8vw;bottom:48px;display:flex;gap:8px}
+.controls button{width:42px;height:42px;border:1px solid #6edff455;background:#07273a;color:white;border-radius:50%;cursor:pointer;font-size:19px}
+.controls button:hover{background:#0d4965}
+.hint{position:absolute;right:8vw;top:32px;color:#8db1c2;font-size:12px;letter-spacing:.08em}
+@media(max-width:700px){.slide{padding:7vh 7vw 12vh}.hero-grid,.depth-layout{grid-template-columns:1fr}.orb{width:35vw;position:absolute;right:7vw;bottom:15vh;opacity:.45}.cards{grid-template-columns:1fr;gap:9px}.card{min-height:0;padding:12px}.card p{font-size:13px}.fact-list{grid-template-columns:1fr}.creature{position:absolute;right:7vw;bottom:15vh;opacity:.35}.footer{left:7vw;right:7vw;bottom:20px}.controls{right:7vw;bottom:38px}.hint{display:none}}
+</style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+<main class="deck" id="deck">
+<section class="slide active">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">Sualtı dünyasına səyahət · 01 / 07</div>
+      <h1>OKEANIN<br>DİBİNDƏ<br><span class="accent">NƏ VAR?</span></h1>
+      <div class="rule"></div>
+      <p class="lead">Yer kürəsinin gizli, qaranlıq və heyrətamiz dünyası.</p>
+      <p style="font-size:15px;color:#8db1c2">Arif Həsənov · Qrup 6526A1</p>
+    </div>
+    <div class="orb" aria-label="Abstrakt mavi okean kürəsi"></div>
+  </div>
+</section>
+<section class="slide">
+  <div class="eyebrow">Dərinliyə eniş · 02 / 07</div>
+  <h2>Yer kürəsinin ən dərin nöqtələrindən biri</h2>
+  <div class="depth-layout">
+    <div>
+      <div class="depth-number"><span id="depthCount">0</span><span style="font-size:.42em"> m</span></div>
+      <p>Challenger Deep — Sakit okeandakı Mariana çökəkliyində yerləşir. Dərinlik ölçmələrə görə təxminən 10 900 metrdir.</p>
+      <p style="font-size:15px;color:#8db1c2">Müqayisə: Everestin hündürlüyü 8 849 metrdir — çökəkliyə yerləşdirilsə, zirvəsi də su altında qalardı.</p>
+    </div>
+    <div><div class="depth-line"></div><p style="font-size:13px;color:#8db1c2">Səthdən dərinliyə</p></div>
+  </div>
+</section>
+<section class="slide">
+  <div class="eyebrow">Qaranlıq aləm · 03 / 07</div>
+  <h2>Günəş işığının çatmadığı dünya</h2>
+  <div class="hero-grid">
+    <div class="fact-list">
+      <div class="fact">Təxminən 1 000 metrdən aşağı günəş işığı fotosintez üçün kifayət etmir.</div>
+      <div class="fact">Dərinliklər çox vaxt soyuq və tam qaranlıqdır.</div>
+      <div class="fact">Bəzi canlılar öz işığını — biolüminessensiyanı yaradır.</div>
+      <div class="fact">Dərinlik canlıları yüksək təzyiqə uyğunlaşıblar.</div>
+    </div>
+    <div class="creature">🪼</div>
+  </div>
+</section>
+<section class="slide">
+  <div class="eyebrow">Gözlənilməz həyat · 04 / 07</div>
+  <h2>Okeanın dibində qaynar mənbələr</h2>
+  <p class="lead">Günəş işığı olmayan yerdə belə həyat öz yolunu tapır.</p>
+  <div class="cards">
+    <div class="card"><div class="num">300°C+</div><h3>Çox isti su</h3><p>Bəzi hidrotermal mənbələrdən çıxan suyun temperaturu 300°C-ni keçə bilər.</p></div>
+    <div class="card"><div class="num">Kimyəvi</div><h3>Enerji mənbəyi</h3><p>Mikroorqanizmlər kimyəvi enerjidən istifadə edərək qida zəncirinin əsasını yaradır.</p></div>
+    <div class="card"><div class="num">Gizli</div><h3>Ekosistemlər</h3><p>Bu mənbələrin ətrafında günəş işığından asılı olmayan canlı icmaları yaşayır.</p></div>
+  </div>
+  <p style="font-size:13px;color:#8db1c2">Qeyd: 300°C-dən yuxarı göstərici bəzi mənbələrə aiddir, hamısına yox.</p>
+</section>
+<section class="slide">
+  <div class="eyebrow">Gizli relyef · 05 / 07</div>
+  <h2>Sualtı dağlar və vulkanlar</h2>
+  <p class="lead">Okeanın altında nəhəng dağ silsilələri, vulkanlar və dərin vadilər uzanır.</p>
+  <div class="cards">
+    <div class="card"><div class="num">01</div><h3>Sualtı dağlar</h3><p>Bəziləri okean dibindən minlərlə metr yüksəlir.</p></div>
+    <div class="card"><div class="num">02</div><h3>Vulkanlar</h3><p>Bir çox sualtı dağ vulkanik proseslər nəticəsində yaranır.</p></div>
+    <div class="card"><div class="num">03</div><h3>Dağ silsilələri</h3><p>Orta okean silsiləsi Yer kürəsinin ən geniş dağ sistemidir.</p></div>
+  </div>
+</section>
+<section class="slide">
+  <div class="eyebrow">Qəribə sakinlər · 06 / 07</div>
+  <h2>Yadplanetliyə bənzəyən canlılar</h2>
+  <div class="hero-grid">
+    <div class="fact-list">
+      <div class="fact">Anglerfish ovunu cəlb etmək üçün işıq saçan orqandan istifadə edə bilər.</div>
+      <div class="fact">Bəzi dərinlik canlılarının bədəni şəffaf və ya qeyri-adi formadadır.</div>
+      <div class="fact">Tədqiqat aparatları insanın çata bilmədiyi yerlərə enir.</div>
+      <div class="fact">Sualtı robotlar kameralar və sensorlarla okean dibini araşdırır.</div>
+    </div>
+    <div class="creature">🐟</div>
+  </div>
+</section>
+<section class="slide">
+  <div class="eyebrow">Sənin növbəndir · 07 / 07</div>
+  <h2>Okeanın ən böyük sirri</h2>
+  <div class="quote">“Dərinliklərdə bizi hələ hansı <span class="accent">kəşflər</span> gözləyir?”</div>
+  <p>Okean haqqında öyrəndiklərimiz çoxdur, amma onun bir çox dərin bölgəsi hələ də ətraflı araşdırılmayıb.</p>
+  <div class="quiz">
+    <strong>Mini-quiz: Challenger Deep haradadır?</strong><br>
+    <button onclick="checkAnswer(false)">Atlantik okeanında</button>
+    <button onclick="checkAnswer(true)">Sakit okeanda</button>
+    <button onclick="checkAnswer(false)">Hind okeanında</button>
+    <div id="answer" aria-live="polite"></div>
+  </div>
+  <p style="font-weight:800;letter-spacing:.08em;color:var(--cyan);margin-top:24px">DİQQƏTİNİZ ÜÇÜN TƏŞƏKKÜR EDİRƏM!</p>
+</section>
+<div class="hint">Keçid: ← → · Tam ekran: F</div>
+<div class="footer"><span id="slideLabel">01 / 07</span><div class="progress"><div id="progressFill"></div></div><span>OCEAN / UNKNOWN</span></div>
+<div class="controls"><button onclick="prevSlide()" aria-label="Əvvəlki slayd">←</button><button onclick="nextSlide()" aria-label="Növbəti slayd">→</button></div>
+</main>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let current=0;
+function showSlide(n){current=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===current));document.getElementById('slideLabel').textContent=String(current+1).padStart(2,'0')+' / 07';document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';if(current===1)animateDepth();}
+function nextSlide(){showSlide(current+1)}function prevSlide(){showSlide(current-1)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();nextSlide()}if(e.key==='ArrowLeft'){prevSlide()}if(e.key.toLowerCase()==='f'){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()}});
+function checkAnswer(ok){document.getElementById('answer').textContent=ok?'Düzgün cavab! Challenger Deep Sakit okeandakı Mariana çökəkliyindədir.':'Bir də düşün! Challenger Deep Mariana çökəkliyində, Sakit okeandadır.'}
+let depthStarted=false;function animateDepth(){if(depthStarted)return;depthStarted=true;let start=null;const el=document.getElementById('depthCount');function step(t){if(!start)start=t;let p=Math.min((t-start)/1700,1);el.textContent=Math.round(10900*(1-Math.pow(1-p,3))).toLocaleString('en-US').replace(/,/g,' ');if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+// Floating underwater particles
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');let w,h,pts=[];
+function resize(){w=canvas.width=innerWidth*devicePixelRatio;h=canvas.height=innerHeight*devicePixelRatio;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';pts=Array.from({length:85},()=>({x:Math.random()*w,y:Math.random()*h,r:(Math.random()*1.7+.3)*devicePixelRatio,v:(Math.random()*.25+.08)*devicePixelRatio,a:Math.random()*.5+.12}))}
+function draw(){ctx.clearRect(0,0,w,h);for(const p of pts){ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(100,225,255,${p.a})`;ctx.fill();p.y-=p.v;if(p.y<-4)p.y=h+4}requestAnimationFrame(draw)}
+addEventListener('resize',resize);resize();draw();
+</script>
+</body>
+</html>
